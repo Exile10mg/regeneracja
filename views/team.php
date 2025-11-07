@@ -1336,14 +1336,16 @@ foreach ($up_CATEGORIES as $catKey => $catInfo) {
                 });
 
                 foreach ($topTasks as $taskKey => $taskData):
+                    // Pobierz ikonę dla tego zadania
+                    $taskIcon = isset($catInfo['tasks'][$taskKey]['icon']) ? $catInfo['tasks'][$taskKey]['icon'] : 'fa-box';
                 ?>
                     <div class="category-stat-card" style="border-left-color: <?php echo esc_attr($catInfo['color']); ?>;">
                         <div class="category-stat-card__icon" style="background: <?php echo esc_attr($catInfo['color']); ?>20;">
-                            <i class="fas fa-box" style="color: <?php echo esc_attr($catInfo['color']); ?>;"></i>
+                            <i class="fas <?php echo esc_attr($taskIcon); ?>" style="color: <?php echo esc_attr($catInfo['color']); ?>;"></i>
                         </div>
                         <div class="category-stat-card__content">
-                            <div class="category-stat-card__value" style="color: <?php echo esc_attr($catInfo['color']); ?>;"><?php echo $taskData['total_qty']; ?></div>
-                            <div class="category-stat-card__label"><?php echo esc_html($taskData['label']); ?></div>
+                            <div class="category-stat-card__value" style="color: <?php echo esc_attr($catInfo['color']); ?>;"><?php echo $taskData['total_qty']; ?> szt.</div>
+                            <div class="category-stat-card__label"><?php echo esc_html($taskData['label']['label']); ?></div>
                         </div>
                     </div>
                 <?php endforeach; ?>
